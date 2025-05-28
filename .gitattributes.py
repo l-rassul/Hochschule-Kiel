@@ -1,3 +1,4 @@
+'''
 <!-- Start der Hochschulbewerbung Webanwendung: index.html -->
 <!DOCTYPE html>
 <html lang="de">
@@ -84,3 +85,4 @@ Er wurde manuell überarbeitet und kommentiert. Es fehlen interaktive Vue.js-Kom
 Die gewählte Gestaltung fördert gute User Experience und ist responsive.
 Die Barrierefreiheit kann noch durch ARIA-Tags und Fokus-Indikatoren verbessert werden. -->
 
+'''
