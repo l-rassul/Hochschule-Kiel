@@ -1,2 +1,101 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hochschulbewerbung</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    let currentLang = "de";
+
+    const translations = {
+      de: {
+        nav: ["Willkommen", "Studienangebote", "Registrieren", "Über uns"],
+        name: "Name",
+        email: "E-Mail",
+        studiengang: "Studiengang",
+        btn: "Registrieren",
+        placeholderName: "Gib deinen Namen ein",
+        placeholderEmail: "Gib deine E-Mail ein"
+      },
+      en: {
+        nav: ["Welcome", "Programs", "Register", "About us"],
+        name: "Name",
+        email: "Email",
+        studiengang: "Study Program",
+        btn: "Register",
+        placeholderName: "Enter your name",
+        placeholderEmail: "Enter your email"
+      },
+      ar: {
+        nav: ["مرحبًا", "البرامج", "تسجيل", "معلومات عنا"],
+        name: "الاسم",
+        email: "البريد الإلكتروني",
+        studiengang: "البرنامج الدراسي",
+        btn: "سجّل",
+        placeholderName: "أدخل اسمك",
+        placeholderEmail: "أدخل بريدك الإلكتروني"
+      },
+      it: {
+        nav: ["Benvenuto", "Corsi", "Registrati", "Chi siamo"],
+        name: "Nome",
+        email: "Email",
+        studiengang: "Corso di studio",
+        btn: "Registrati",
+        placeholderName: "Inserisci il tuo nome",
+        placeholderEmail: "Inserisci la tua email"
+      },
+      es: {
+        nav: ["Bienvenido", "Programas", "Registrar", "Sobre nosotros"],
+        name: "Nombre",
+        email: "Correo electrónico",
+        studiengang: "Programa de estudio",
+        btn: "Registrar",
+        placeholderName: "Introduce tu nombre",
+        placeholderEmail: "Introduce tu correo"
+      }
+    };
+
+    function translatePage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+      document.getElementById("label-name").innerText = t.name;
+      document.getElementById("label-email").innerText = t.email;
+      document.getElementById("label-studiengang").innerText = t.studiengang;
+      document.getElementById("btn-registrieren").innerText = t.btn;
+      document.getElementById("input-name").placeholder = t.placeholderName;
+      document.getElementById("input-email").placeholder = t.placeholderEmail;
+
+      const navIds = ["nav-willkommen", "nav-angebote", "nav-registrieren", "nav-ueberuns"];
+      navIds.forEach((id, index) => {
+        document.getElementById(id).innerText = t.nav[index];
+      });
+    }
+
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.add('hidden'));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
+    }
+
+    function showStudienInfo() {
+      const selection = document.getElementById("studienwahl").value;
+      const daten = {
+        Informatik: "Informatik vermittelt dir fundierte Kenntnisse in Softwareentwicklung, Algorithmen und IT-Systemen.",
+        BWL: "Betriebswirtschaftslehre bereitet dich auf Management, Finanzen und Marketing vor.",
+        Medienwissenschaft: "Hier lernst du alles über Medienanalyse, Kommunikation und digitale Kultur.",
+        Maschinenbau: "Du bekommst Einblick in Konstruktion, Thermodynamik und Produktionsprozesse.",
+        Psychologie: "Psychologie befasst sich mit dem Erleben und Verhalten des Menschen.",
+        Architektur: "Gestalte Räume kreativ mit technischem und ästhetischem Verständnis.",
+        Mathematik: "Mathematik fördert logisches Denken und Problemlösung auf hohem Niveau.",
+        Biologie: "Biologie erforscht das Leben – von Zellen bis zu Ökosystemen.",
+        Jura: "Im Jurastudium lernst du Rechtswissenschaften, Gesetze und Argumentation.",
+        Wirtschaftsinformatik: "Kombination aus IT-Kompetenz und wirtschaftlichem Know-how."
+      };
+
+      const info = daten[selection] || "Bitte Studiengang auswählen.";
+      document.getElementById("studieninfo").innerText = info;
+    }
+  </script>
+</head>
